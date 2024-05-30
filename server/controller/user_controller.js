@@ -48,7 +48,7 @@ export const loginuser =async(request,response)=>{
     try{
         let match = await bcrypt.compare(request.body.password,user.password);
         if(match){
-            const accesstoken = jwt.sign(user.toJSON(),process.env.A_S_K,{expiresIn:'15m'});
+            const accesstoken = jwt.sign(user.toJSON(),process.env.A_S_K,{expiresIn:'60m'});
             const refreshtoken = jwt.sign(user.toJSON(),process.env.R_S_K);
 
             const  newtoken = new token({token:refreshtoken});
